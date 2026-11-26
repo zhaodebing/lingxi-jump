@@ -29,6 +29,9 @@ import li.gkd.app.ui.home.LxRow
 import li.gkd.app.ui.navigation.SupportRoute
 
 private const val GKD_REPO = "https://github.com/gkd-kit/gkd"
+private const val LINGXI_REPO = "https://github.com/zhaodebing/lingxi-jump"
+private const val LINGXI_RELEASES = "$LINGXI_REPO/releases/latest"
+private const val LINGXI_ISSUES = "$LINGXI_REPO/issues"
 
 @Composable
 fun AboutPage() {
@@ -45,6 +48,24 @@ fun AboutPage() {
             LxRow("内核", "与 GKD 深度融合", chevron = true) {
                 mainVm.navigator.openWebPage(GKD_REPO)
             }
+        }
+
+        Spacer(Modifier.height(14.dp))
+
+        LxGroup("开源") {
+            LxRow("源码仓库", "github.com/zhaodebing/lingxi-jump", chevron = true) {
+                mainVm.navigator.openWebPage(LINGXI_REPO)
+            }
+            LxDivider()
+            LxRow("检查更新", "GitHub Releases", chevron = true) {
+                mainVm.navigator.openWebPage(LINGXI_RELEASES)
+            }
+            LxDivider()
+            LxRow("问题反馈", "提 Issue", chevron = true) {
+                mainVm.navigator.openWebPage(LINGXI_ISSUES)
+            }
+            LxDivider()
+            LxRow("开源许可", "GPL-3.0", chevron = true) { showLicense = true }
         }
 
         Spacer(Modifier.height(14.dp))
@@ -68,10 +89,6 @@ fun AboutPage() {
         }
 
         Spacer(Modifier.height(14.dp))
-
-        LxGroup("许可") {
-            LxRow("开源许可", "GPL-3.0", chevron = true) { showLicense = true }
-        }
 
         Spacer(Modifier.height(14.dp))
         Text(
