@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">灵犀跳跃</string>
+    <string name="companion_a11y_label">灵犀跳跃 companion service (do not enable manually)</string>
+    <string name="companion_a11y_desc">Managed automatically by 灵犀跳跃. Do not enable manually.\n\nHelps automation work in some apps and keeps 灵犀跳跃 running in the background.\n\nAccessibility capabilities are disabled; only the service remains running, with minimal overhead. Some apps may still detect accessibility as enabled.</string>
+    <string name="privileged_a11y_label">灵犀跳跃 touch optimization (do not enable manually)</string>
+    <string name="privileged_a11y_desc">Managed automatically by 灵犀跳跃. Do not enable manually.\n\nReads screen content and matches rules. The privileged service performs clicks and swipes to reduce touch stutter.</string>
+    <string name="a11y_desc">Custom screen clicking based on advanced selectors and subscription rules.\n\nUse custom selectors and subscription rules to click controls anywhere on screen and create custom shortcuts.</string>
+    <string name="import_backup">Import backup</string>
+    <string name="capture_snapshot">Capture snapshot</string>
+    <string name="debug_service">Debug service</string>
+    <string name="snapshot_button">Snapshot button</string>
+    <string name="rule_match">Rule matching</string>
+    <string name="record_activity">Activity service</string>
+    <string name="record_a11y_event">Event service</string>
+</resources>
