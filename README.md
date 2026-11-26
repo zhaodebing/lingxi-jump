@@ -6,10 +6,11 @@
 [![下载](https://img.shields.io/badge/下载-最新版本-2ea44f?style=for-the-badge)](https://github.com/zhaodebing/lingxi-jump/releases/latest)
 [![许可](https://img.shields.io/badge/许可-GPL--3.0--only-blue?style=for-the-badge)](./LICENSE)
 
-<!-- 演示图位：把录屏转成 GIF（≤2MB）后放在这里，替换下面这行注释 -->
-<!-- ![演示](./docs/demo.gif) -->
+<p align="center">
+  <img src="./docs/demo.gif" alt="三步上手" width="300">
+</p>
 
-<p align="center"><i>（这里放 10 秒演示：开屏广告出现 → 0.3 秒后自动关闭 → 进入首页）</i></p>
+<p align="center"><i>首页 → 投喂规则 → 灵犀喂养：三步就有规则可用</i></p>
 
 ---
 
