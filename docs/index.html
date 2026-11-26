@@ -88,15 +88,22 @@
     <a class="btn btn-primary" href="https://github.com/zhaodebing/lingxi-jump/releases/latest">下载 APK</a>
     <a class="btn btn-ghost" href="https://github.com/zhaodebing/lingxi-jump">查看源码</a>
   </div>
-  <p class="meta">v2.1.4 · 5.1 MB · Android 8.0+ · 无需 root</p>
+  <p class="meta">v2.2.1 · 4.9 MB · Android 8.0+ · 无需 root</p>
 
   <div class="card">
-    <h2>它和同类不一样的地方</h2>
+    <h2>判断依据：屏幕上有广告，才动手</h2>
+    <p style="color:var(--sub);font-size:14px;margin:0 0 12px">
+      不看页面叫什么名字，而是看屏幕上有没有广告。三条证据满足任意一条才动手：
+    </p>
     <ul>
-      <li><b>点完会回头看一眼</b>：500ms 后复核「跳过」还在不在，还在就不算成功——不弹假提示、不虚增计数。</li>
-      <li><b>规矩由你定</b>：生效时间、每屏最多几次、尝试间隔都在你手里，默认值已经够用。</li>
-      <li><b>纯本地运行</b>：不采集、不上传、不埋点，规则与记录都只存在这台手机上。</li>
+      <li><b>全屏素材</b>：有图片 / 视频 / WebView 占屏 ≥55%</li>
+      <li><b>广告标识</b>：文本里有「广告」「点击跳转」「了解更多」这类字样</li>
+      <li><b>控件极少</b>：整页可点的控件只有 1~8 个，且页面不可滚动</li>
     </ul>
+    <p style="color:var(--sub);font-size:14px;margin:12px 0 0">
+      三条都不成立 → 屏幕上没有广告 → 一个字都不点。<br>
+      所以「跳过」在屏幕任何位置都能识别，左上、右下、正中间都行。
+    </p>
   </div>
 
   <div class="card">
@@ -113,10 +120,11 @@
     <table>
       <tr><th>场景</th><th>行为</th></tr>
       <tr><td>应用启动时的开屏广告</td><td><b>跳过</b></td></tr>
-      <tr><td>文字类跳过按钮</td><td><b>一枪命中</b></td></tr>
+      <tr><td>屏幕任意位置的「跳过」</td><td><b>都能识别</b></td></tr>
       <tr><td>广告 SDK 的控件 id</td><td><b>按 id 点</b></td></tr>
-      <tr><td>应用内部的按钮、列表、搜索</td><td>不碰</td></tr>
-      <tr><td>输入框、详情页、设置页</td><td>不碰</td></tr>
+      <tr><td>输入框里打的字（知乎搜索框）</td><td>不碰</td></tr>
+      <tr><td>列表 / 标签栏里的字（酷安分类）</td><td>不碰</td></tr>
+      <tr><td>普通页面上出现的「跳过」</td><td>不碰（没有广告证据）</td></tr>
       <tr><td>自绘开屏、独立窗口</td><td>交给订阅规则</td></tr>
     </table>
   </div>
@@ -125,15 +133,17 @@
     <h2>常见问题</h2>
     <details><summary>装了没反应？</summary><p>先看首页「无障碍服务」是不是"已连接"。MIUI / ColorOS 还需要允许"后台弹出界面"与"自启动"。</p></details>
     <details><summary>某个应用跳不掉？</summary><p>那多半是自绘开屏，文字规则够不着。试试订阅里有没有对应应用，或在「灵犀喂养」填那个按钮上的字。</p></details>
-    <details><summary>会不会点错？</summary><p>判定里有三道闸：手指按住不动手、列表/输入框/详情页否决、失败两次冷却 60 秒。</p></details>
+    <details><summary>会不会点错？</summary><p>判定是"有广告才动手"，再加输入框、列表、整屏容器三道否决。每一条都对应一次真实踩过的坑。</p></details>
+    <details><summary>点了没反应？</summary><p>点完 500ms 会复核「跳过」还在不在：还在就不弹提示、不计数，也不会对着同一处反复点。</p></details>
+    <details><summary>有什么跳不掉？</summary><p>自绘开屏（酷安、腾讯视频那种）经常既没文字也没控件 id，文字规则够不着，这类交给订阅规则。引导页有极小概率被误判成广告页。</p></details>
     <details><summary>通知栏那条能去掉吗？</summary><p>可以。自启与省电 → 常驻通知。它是前台服务，用来保证服务不被系统杀掉。</p></details>
     <details><summary>数据安全吗？</summary><p>不采集设备信息、不埋点、不上报。唯一联网行为是你手动添加订阅并点「更新」时。</p></details>
   </div>
 
   <div class="card">
-    <h2>校验（v2.1.4）</h2>
+    <h2>校验（v2.2.1）</h2>
     <p style="color:var(--sub);font-size:14px;margin:0 0 8px">下载后可自行核对，防止被中间人替换：</p>
-    <code>sha256: 00ef18ff832718b30f4f997a1361aa1bcb32d8c65ef6d41dd70a1697d78f7b4e</code>
+    <code>sha256: 444591d1a9b8ca1f475963cc32fb280f45e3c125790b095d8eba0b4acd343a2f</code>
   </div>
 
   <footer>
