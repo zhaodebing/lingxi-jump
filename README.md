@@ -1,93 +1,137 @@
-# gkd
+# 灵犀跳跃
 
-<p align="center">
-<a href="https://gkd.li/"><img src="https://e.gkd.li/2a0a7787-f2dd-4529-a885-93f3b8c857c3" alt="GKD.LI" width="40%" /></a>
-</p>
+> **只跳开屏广告，其余一概不碰。**
+> 点完还会回头看一眼——没跳掉就不算成功。
 
-基于 [高级选择器](https://gkd.li/guide/selector) + [订阅规则](https://gkd.li/guide/subscription) + [快照审查](https://github.com/gkd-kit/inspect) 的自定义屏幕点击 Android 应用
+[![下载](https://img.shields.io/badge/下载-最新版本-2ea44f?style=for-the-badge)](https://github.com/zhaodebing/lingxi-jump/releases/latest)
+[![许可](https://img.shields.io/badge/许可-GPL--3.0--only-blue?style=for-the-badge)](./LICENSE)
 
-通过自定义规则，在指定界面，满足指定条件(如屏幕上存在特定文字)时，点击特定的节点或位置或执行其他操作
+<!-- 演示图位：把录屏转成 GIF（≤2MB）后放在这里，替换下面这行注释 -->
+<!-- ![演示](./docs/demo.gif) -->
 
-- **快捷操作**
+<p align="center"><i>（这里放 10 秒演示：开屏广告出现 → 0.3 秒后自动关闭 → 进入首页）</i></p>
 
-  帮助你简化一些重复的流程, 如某些软件自动确认电脑登录
+---
 
-- **跳过流程**
+## 它做什么
 
-  某些软件可能在启动时存在一些烦人的流程, 这个软件可以帮助你点击跳过这个流程
+在应用启动的那几秒里，找到开屏广告上的「跳过」并点掉。就这一件事。
 
-## 免责声明
+## 它不做什么
 
-**本项目遵循 [GPL-3.0-only](/LICENSE) 开源，项目仅供学习交流，禁止用于商业或非法用途**
+- ❌ 不碰应用内部的按钮
+- ❌ 不碰输入框、列表、搜索结果
+- ❌ 不采集任何数据、不上传、不埋点
+- ❌ 不需要登录、没有账号体系
 
-## 安装
+## 三个和同类不一样的地方
 
-<a href="https://gkd.li/guide/"><img src="https://e.gkd.li/f23b704d-d781-494b-9719-393f95683b89" alt="Download from GKD.LI" width="32%" /></a><a href="https://play.google.com/store/apps/details?id=li.songe.gkd"><img src="https://e.gkd.li/f63fabeb-0342-4961-a46d-cac61b0f8856" alt="Download from Google Play" width="32%" /></a><a href="https://github.com/gkd-kit/gkd/releases"><img src="https://e.gkd.li/c1ef2bb9-7472-46d5-9806-81b4c37e5b4d" alt="Download from GitHub releases" width="32%" /></a>
+**1. 点完会回头验证**
 
-如遇问题请先查看 [疑难解答](https://gkd.li/guide/faq)
+引擎判断"成功"的依据只是"点击动作发出去了"。广告 SDK 的按钮经常是**点得到、不响应**，于是同类工具会出现"实际没跳过，却弹了已跳过提示"。
 
-## 截图
+我们点完等 500ms，重新查同一个窗口里「跳过」还在不在：
 
-|                                                               |                                                               |                                                               |                                                               |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| ![img](https://e.gkd.li/1e8934c1-2303-4182-9ef2-ad4c46882570) | ![img](https://e.gkd.li/01f230d7-9b89-4314-b573-38bd233d22f9) | ![img](https://e.gkd.li/dfa0a782-b21e-473a-96e4-eef27773b71b) | ![img](https://e.gkd.li/641decd1-2e60-4e95-b78c-df38d1d98a4d) |
-| ![img](https://e.gkd.li/b216b703-d3de-4798-81ba-29e0ae63264f) | ![img](https://e.gkd.li/76c25ac9-4189-47cd-b40b-b9e72c79b584) | ![img](https://e.gkd.li/7288502e-808b-4d9a-88b5-1085abaa0d46) | ![img](https://e.gkd.li/aa974940-7773-409a-ae84-3c02fee9c770) |
+```
+还在   → 判定失败：不弹提示、不计数、下次再补一枪
+不在了 → 才认为真的跳掉了
+```
 
-## 订阅
+**2. 灵犀喂养：你自己填词，不用懂规则**
 
-GKD **默认不提供规则**，需自行添加本地规则，或者通过订阅链接的方式获取远程规则
+订阅规则覆盖不到的应用，填个词就行：
 
-也可通过 [subscription-template](https://github.com/gkd-kit/subscription-template) 快速构建自己的远程订阅
+```
+跳过
+```
 
-第三方订阅列表可在 <https://github.com/topics/gkd-subscription> 查看
+它会自动展开成「跳过 / 跳过3 / 跳过 3 / 跳过 5s / 跳过(3)」这些常见写法，并且主动排掉
+「跳过联网 / 跳过片头 / 跳过引导 / 跳过登录」这类**别的功能**。
 
-要加入此列表, 需点击仓库主页右上角设置图标后在 Topics 中添加 `gkd-subscription`
+**3. 规矩由你定**
 
-<details>
-<summary>示例图片 - 添加至 Topics (点击展开)</summary>
+生效时间、每屏最多点几次、两次尝试的间隔，都在「高级设置」里，默认值已经够用。
 
-![image](https://e.gkd.li/9e340459-254f-4ca0-8a44-cc823069e5a7)
+## 快速开始
 
-</details>
+### 1. 安装
 
-## 选择器
+从 [Releases](https://github.com/zhaodebing/lingxi-jump/releases/latest) 下载 `lingxi-jump-x.y.z.apk`，安装。
 
-一个类似 CSS 选择器的选择器, 能联系节点上下文信息, 更容易也更精确找到目标节点
+> 包名 `li.songe.gkd`，与官方 GKD 不能共存，装之前请先卸载或二者择一。
 
-<https://gkd.li/guide/selector>
+### 2. 开无障碍
 
-[@[vid=\"menu\"] < [vid=\"menu_container\"] - [vid=\"dot_text_layout\"] > [text^=\"广告\"]](https://i.gkd.li/i/14881985?gkd=QFt2aWQ9Im1lbnUiXSA8IFt2aWQ9Im1lbnVfY29udGFpbmVyIl0gLSBbdmlkPSJkb3RfdGV4dF9sYXlvdXQiXSA-IFt0ZXh0Xj0i5bm_5ZGKIl0)
+打开应用 → 首页「无障碍服务」→ 按引导到系统设置里勾选「灵犀跳跃」。
 
-<details>
-<summary>示例图片 - 选择器路径视图 (点击展开)</summary>
+### 3. 让它有规则可选
 
-[![image](https://e.gkd.li/a2ae667b-b8c5-4556-a816-37743347b972)](https://i.gkd.li/i/14881985?gkd=QFt2aWQ9Im1lbnUiXSA8IFt2aWQ9Im1lbnVfY29udGFpbmVyIl0gLSBbdmlkPSJkb3RfdGV4dF9sYXlvdXQiXSA-IFt0ZXh0Xj0i5bm_5ZGKIl0)
+两条路，任选或都用：
 
-</details>
+| 方式 | 适合 | 怎么做 |
+|---|---|---|
+| **订阅规则** | 想一步到位 | 投喂规则 → 右下角 `+` → 粘贴 GKD 订阅链接 |
+| **灵犀喂养** | 不想折腾订阅 | 投喂规则 → 灵犀喂养 → 填「跳过」 |
 
-## 开发
+### 4. 结束
 
-- [应用架构与依赖](docs/architecture.md)
-- [Desktop 启动与调试](gkd-app/README.md)
-- [本地数据与产物](docs/local-development.md)
-- [开发约束](AGENTS.md)
+打开任意有开屏广告的应用，0.3 秒左右广告会自己消失。
 
-## 衍生
+## 兼容性
 
-开发过程中的衍生项目，它们正在被 gkd 使用，也许对你有帮助
+- 规则格式与 [GKD](https://github.com/gkd-kit/gkd) 订阅兼容，现有订阅可直接导入
+- 需要 Android 8.0 及以上
+- 不需要 root；用无障碍即可，也可以配合 Shizuku / ADB 使用
 
-- [kotlin-json5](https://github.com/lisonge/kotlin-json5)
-- [kotlin-codeorigin](https://github.com/lisonge/kotlin-codeorigin)
-- [android-api-diff](https://github.com/android-cs/android-api-diff)
-- [remap](https://github.com/lisonge/remap)
-- [priv-kit](https://github.com/priv-kit/priv-kit)
-- [morph-compose](https://github.com/lisonge/morph-compose)
-- [compose-webview2](https://github.com/lisonge/compose-webview2)
+## 与同类工具的区别
 
-## 捐赠
+| | 灵犀跳跃 | 常见跳过工具 |
+|---|---|---|
+| 点了没反应会不会误报成功 | **不会**（500ms 后复核） | 会 |
+| 规则是否可审计 | 全部本地，开源 | 多数是云端黑盒 |
+| 是否联网 | 只在订阅更新时 | 常驻拉云端规则 |
+| 会不会点应用内部的按钮 | 不点（列表/输入框/详情页否决） | 视实现而定 |
 
-如果 GKD 对你有用, 可以通过以下链接支持该项目
+## 常见问题
 
-<https://github.com/lisonge/sponsor>
+**Q：装了没反应？**
+先确认首页「无障碍服务」显示"已连接"；部分系统（MIUI/ColorOS）需要额外允许"后台弹出界面"与"自启动"。
 
-或前往 [Google Play](https://play.google.com/store/apps/details?id=li.songe.gkd) 给个好评
+**Q：某个应用跳不掉？**
+那多半是自绘开屏或独立窗口，文字规则够不着。可以在投喂规则里找对应订阅，或者用「灵犀喂养」填那个按钮上的字试试。
+
+**Q：会不会误点应用内部的「跳过」？**
+不会。判定里有三条闸：手指按住不动手、列表/输入框/详情页否决、失败两次冷却 60 秒。
+
+**Q：为什么通知栏一直有一条？**
+那是前台服务通知，用来保证服务不被系统杀掉。可以在「自启与省电 → 常驻通知」里关掉。
+
+**Q：可以只用 Shizuku 吗？**
+可以。设置 → 连接方式 → 工作模式 → 自动化。
+
+## 校验
+
+每个 Release 的 APK 都附有校验值，下载后可自行核对：
+
+```bash
+# 2.1.4
+sha256sum lingxi-jump-2.1.4.apk
+# 00ef18ff832718b30f4f997a1361aa1bcb32d8c65ef6d41dd70a1697d78f7b4e
+```
+
+## 许可与归属
+
+- 本项目基于 [gkd-kit/gkd](https://github.com/gkd-kit/gkd) 1.13.2 二次开发，以 **GPL-3.0-only** 分发，见 [LICENSE](./LICENSE)
+- 上游名称「GKD」及其商标不属于本项目，不用于宣传本衍生作品
+- 与上游的差异说明见 [SOURCE-README.md](./SOURCE-README.md)
+
+## 隐私
+
+不采集设备信息、不埋点、不上报任何数据。唯一的联网行为是你手动添加订阅并点「更新」时访问该链接。
+触发记录、规则、设置全部保存在本机。
+
+## 赞赏
+
+完全免费，功能不加锁。应用内「关于 → 支持」有赞赏入口，不赞赏同样完整可用。
+
+公众号：**趣味暖心**（更新说明、规则变动、踩过的坑都发在这里）
