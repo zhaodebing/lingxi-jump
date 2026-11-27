@@ -1,0 +1,14 @@
+Lingxi Jump is an open-source Android utility that dismisses app launch (splash) ads by tapping the skip button, and nothing else.
+
+It only acts when there is evidence that an ad is actually on screen:
+- full-screen media covering at least 55% of the display, or
+- ad-related labels such as "ad", "learn more", "third-party page", or
+- very few clickable elements on a non-scrollable page
+
+It never taps text inside input fields, text inside scrolling containers, or content pages such as search, detail and web pages.
+
+After tapping, it re-checks the same window 500 ms later. If the skip button is still there, the action is recorded as failed: no toast, no counter, and no repeated tapping.
+
+Requires Android 8.0+. No root. Uses the system accessibility service.
+
+Source code (GPL-3.0-only): https://github.com/zhaodebing/lingxi-jump
