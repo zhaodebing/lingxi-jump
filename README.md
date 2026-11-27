@@ -130,8 +130,8 @@
 
 ```bash
 # 2.2.1
-sha256sum lingxi-jump-2.2.1.apk
-# 444591d1a9b8ca1f475963cc32fb280f45e3c125790b095d8eba0b4acd343a2f
+sha256sum lingxi-jump-2.2.4.apk
+# 81df9d66b708edda86ae6e166a6235e1457fa793457b91f976da4ce56a9a9cc2
 ```
 
 ## 许可与归属
