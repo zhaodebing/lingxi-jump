@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zhaodebing.github.io/lingxi-jump/sitemap.xml

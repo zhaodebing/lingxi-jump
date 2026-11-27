@@ -4,7 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>灵犀跳跃 · 只跳开屏广告</title>
-<meta name="description" content="开屏广告跳过工具。点完会回头验证，没跳掉不算成功。开源、纯本地、不采集数据。">
+<meta name="description" content="灵犀跳跃是一款安卓开屏广告跳过工具，免 root、不联网、不采集数据。只跳开屏广告，应用内部一概不碰。点完会回头验证，没跳掉不算成功。支持自定义关键词与 GKD 订阅规则。">
+<meta name="keywords" content="开屏广告,跳过广告,安卓去广告,开屏广告怎么关闭,GKD,灵犀跳跃,免root,跳过开屏,广告跳过工具">
+<meta name="author" content="灵犀跳跃">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://zhaodebing.github.io/lingxi-jump/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="灵犀跳跃 · 只跳开屏广告">
+<meta property="og:description" content="只跳开屏广告，应用内部一概不碰。点完会回头验证，没跳掉不算成功。免 root、不联网、不采集数据。">
+<meta property="og:url" content="https://zhaodebing.github.io/lingxi-jump/">
+<meta property="og:image" content="https://zhaodebing.github.io/lingxi-jump/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="灵犀跳跃 · 只跳开屏广告">
+<meta name="twitter:description" content="只跳开屏广告，其余一概不碰。免 root、不联网、不采集数据。">
+<meta name="twitter:image" content="https://zhaodebing.github.io/lingxi-jump/og.png">
 <style>
   :root{
     --green:#1d6b47; --green-2:#2f8f60; --bg:#f4f8f5;
@@ -73,6 +86,40 @@
   .pill{display:inline-block;background:rgba(29,107,71,.08);color:var(--green);
     border-radius:999px;padding:3px 12px;font-size:12px;margin:0 4px 6px 0}
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "灵犀跳跃",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Android 8.0+",
+      "description": "安卓开屏广告跳过工具。只跳开屏广告，应用内部一概不碰；点完会回头验证，没跳掉不算成功。",
+      "url": "https://zhaodebing.github.io/lingxi-jump/",
+      "downloadUrl": "https://github.com/zhaodebing/lingxi-jump/releases/latest",
+      "softwareVersion": "2.2.6",
+      "license": "https://www.gnu.org/licenses/gpl-3.0.html",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "安卓开屏广告怎么跳过？",
+          "acceptedAnswer": { "@type": "Answer", "text": "安装灵犀跳跃，开启无障碍服务，然后在「灵犀喂养」里填一个「跳过」就能生效。想覆盖更多应用，可以再导入一个 GKD 订阅。" } },
+        { "@type": "Question", "name": "需要 root 吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不需要。使用系统无障碍服务即可，也可以配合 Shizuku 或一次性 ADB 授权使用自动化模式。" } },
+        { "@type": "Question", "name": "会不会误点应用内部的按钮？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不会。判定要求屏幕上确实存在广告证据才动手，并且会排除输入框里的文字、列表与标签栏里的文字，搜索页、详情页、网页页整页不处理。" } },
+        { "@type": "Question", "name": "哪些开屏广告跳不掉？",
+          "acceptedAnswer": { "@type": "Answer", "text": "自绘开屏（例如豆瓣、酷安）跳不掉。这类广告的画面是应用自己绘制上去的，无障碍树里只有一整块可点区域，没有独立的跳过按钮节点。" } },
+        { "@type": "Question", "name": "会采集数据吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不会。不采集设备信息、不埋点、不上报。唯一的联网行为是你手动添加订阅并点击更新时访问该链接。" } }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <div class="wrap">
